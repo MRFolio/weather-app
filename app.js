@@ -1,4 +1,5 @@
-const openWeatherKey = "75eb612d588ade5eca1053da5b38275c";
+import key from "./key.js";
+
 const weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
 
 /* const getForecast = async () => {
@@ -13,4 +14,4 @@ const weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
   }
 }; */
 
-getForecast();
+/* getForecast(); */
