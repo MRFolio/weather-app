@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%) no-repeat;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.title {
+  background: #eeeef0;
+  color: red;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=main.css.map */

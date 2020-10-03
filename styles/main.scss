@@ -1,0 +1,19 @@
+@use 'helpers/variables' as v;
+@use 'helpers/resets';
+
+body {
+  background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%) no-repeat;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.title {
+  background: rgb(238, 238, 240);
+  color: v.$bg;
+  box-shadow: -19px 14px 33px 0px rgba(235, 230, 235, 1);
+  font: {
+    family: v.$font-family;
+    weight: bold;
+  }
+}
