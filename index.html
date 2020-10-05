@@ -15,11 +15,22 @@
       <div class="input-container">
         <h1 class="title">Weather app!</h1>
         <form>
-          <input id="city" type="text" name="city" placeholder="Enter city..." />
-          <button id="btn" type="submit" ">Submit</button>
+          <input
+            id="city"
+            type="text"
+            name="city"
+            placeholder="Enter city..."
+          />
+          <button id="btn" type="submit">Submit</button>
         </form>
       </div>
-      <section class="result"></section>
+      <section class="result">
+        <div class="city-heading">
+          <h4 class="city-name"></h4>
+        </div>
+        <div class="city-icon"></div>
+        <div class="content"></div>
+      </section>
     </main>
     <script src="app.js" type="module"></script>
   </body>
