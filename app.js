@@ -2,8 +2,10 @@ import key from "./key.js";
 
 const weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
 
-/* const getForecast = async () => {
-  const urlToFetch = `${weatherUrl}?&q=${city}&appid=${openWeatherKey}`;
+let city = "Tartu";
+
+const getForecast = async () => {
+  const urlToFetch = `${weatherUrl}?&q=${city}&appid=${key}&units=metric`;
   try {
     const response = await fetch(urlToFetch);
     const data = await response.json();
@@ -12,6 +14,6 @@ const weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
   } catch (error) {
     console.log(error);
   }
-}; */
+};
 
-/* getForecast(); */
+getForecast();
