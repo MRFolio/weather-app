@@ -5,7 +5,8 @@ To-do list:
 - [x] Basic boilerplate html
 - [x] JS (boilerplate async fetch)
 - [ ] CSS(SCSS)
-- [ ] icons
-- [ ] night/day theme
+- [x] icons
+- [ ] night/day theme background
+- [ ] wind speed & direction 
+- [ ] loading spinner
 - [ ] animations
-
