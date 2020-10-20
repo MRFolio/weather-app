@@ -2,18 +2,113 @@
 @use 'helpers/resets';
 
 body {
-  background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%) no-repeat;
+  background: rgb(223, 206, 55);
+  background: -moz-linear-gradient(
+    183deg,
+    rgba(240, 7, 7, 0.393) 0%,
+    rgb(241, 200, 14) 100%
+  );
+  background: -webkit-linear-gradient(
+    183deg,
+    rgba(240, 7, 7, 0.393) 0%,
+    rgb(241, 200, 14) 100%
+  );
+  background: linear-gradient(
+    183deg,
+    rgba(240, 7, 7, 0.393) 0%,
+    rgb(241, 200, 14) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e96e18",endColorstr="#719855",GradientType=1);
   min-height: 100vh;
   display: grid;
   place-items: center;
+  font-family: v.$font-family;
+
+  &.cold {
+    background: -webkit-linear-gradient(180deg, #9a93e0 0%, #7db3bd 100%);
+    background: linear-gradient(180deg, #9a93e0 0%, #7db3bd 100%);
+  }
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
-  background: rgb(238, 238, 240);
-  color: v.$bg;
-  box-shadow: -19px 14px 33px 0px rgba(235, 230, 235, 1);
+  box-shadow: v.$light-shadow;
+  border-radius: 0.25em;
+  padding: 0.4em;
   font: {
     family: v.$font-family;
     weight: bold;
+    size: 1.5rem;
+  }
+}
+
+#city {
+  padding: 1em;
+  margin: 0.5em;
+  font-size: 1rem;
+  color: black;
+  border: none;
+  border-bottom: 2px solid orange;
+  border-radius: 0.5em 0 0.5em 0;
+  &:focus {
+    background: white;
+    outline: none;
+  }
+}
+
+.result {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 1em;
+  padding: 2em 4em;
+  background: rgba(228, 224, 209, 0.3);
+  border-radius: 1em;
+  border: 2px solid orange;
+  &.show {
+    display: flex;
+  }
+  &.cold {
+    background: rgba(9, 95, 175, 0.3);
+    border-color: rgb(116, 116, 177);
+  }
+
+  .date-time {
+    font-size: 1rem;
+    padding: 0.3em 0.5em;
+  }
+
+  .city-name {
+    font-size: 2.25rem;
+    margin: 0.1em;
+  }
+
+  .temp {
+    margin: 0.3em;
+    padding: 0.4em 0.5em;
+    background: rgba(250, 250, 250, 0.2);
+    border-radius: 0.2em;
+    font: {
+      size: 3rem;
+      weight: bold;
+    }
+    .degree {
+      font-size: 2rem;
+    }
+  }
+  .city-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .description {
+      font-size: 1.5rem;
+    }
   }
 }
