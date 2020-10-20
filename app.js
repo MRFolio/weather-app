@@ -1,6 +1,7 @@
 import key from "./key.js";
 
 const container = document.querySelector(".result");
+const searchForm = document.getElementById("form");
 const userInput = document.getElementById("city");
 const bodyClass = document.querySelector("body");
 
@@ -26,12 +27,10 @@ const getForecast = async (city) => {
 
 const getDate = () => {
   const date = new Date();
-  const result = date.toLocaleTimeString([], { timeStyle: "short" });
-  const string = date.toString();
-  const dateArray = string.split(" ");
-  const dateDisplayText = dateArray.slice(0, 5);
-  const res = `<div class="date-time"><span class="date">${dateDisplayText[0]} ${dateDisplayText[1]} ${dateDisplayText[2]}</span><span class="time">, ${result}</span></div>`;
-  container.innerHTML = res;
+  const time = date.toLocaleTimeString("en-US", { timeStyle: "short" });
+  const dateArray = date.toString().split(" ");
+  const dateResult = `<div class="date-time"><span class="date">${dateArray[0]} ${dateArray[1]} ${dateArray[2]}</span><span class="time">, ${time}</span></div>`;
+  container.innerHTML = dateResult;
 };
 
 const backgroundColor = (temp) => {
@@ -39,13 +38,13 @@ const backgroundColor = (temp) => {
     bodyClass.classList.add("cold");
     container.classList.add("cold");
   } else {
-    container.classList.remove("cold");
     bodyClass.classList.remove("cold");
+    container.classList.remove("cold");
   }
 };
 
-const displayData = async (city) => {
-  const { name, temp, country, icon, main } = await getForecast(city);
+const displayData = async (inputUser) => {
+  const { name, temp, country, icon, main } = await getForecast(inputUser);
   getDate();
   const result = `<div class="content">
   <h4 class="city-name">${name}, ${country}</h4><p class="temp">${temp.toFixed(
@@ -60,8 +59,9 @@ const displayData = async (city) => {
 
 function showCity(e) {
   e.preventDefault();
-  const inputCity = e.target.value.trim();
-  displayData(inputCity);
+  const input = userInput.value.trim();
+  displayData(input);
+  searchForm.reset();
 }
 
-userInput.addEventListener("input", showCity);
+searchForm.addEventListener("submit", showCity);
