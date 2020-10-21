@@ -6,9 +6,5 @@ To-do list:
 - [x] JS (boilerplate async fetch)
 - [x] icons
 - [x] CSS(SCSS)
-- [ ] date and local time display
-- [ ] night/day theme background
-- [ ] wind speed & direction 
-- [ ] loading spinner
-- [ ] animations
-- [ ] deploy netlify/github
+- [x] date and local time display
+- [x] night/day theme background
