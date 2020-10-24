@@ -33,15 +33,24 @@ const getDate = () => {
   container.innerHTML = dateResult;
 };
 
-const backgroundColor = (temp) => {
-  if (temp < 15) {
-    bodyClass.classList.add("cold");
-    container.classList.add("cold");
-  } else {
-    bodyClass.classList.remove("cold");
-    container.classList.remove("cold");
-  }
-};
+function coldClassAdd() {
+  bodyClass.classList.add("cold");
+  container.classList.add("cold");
+}
+
+function coldClassRemove() {
+  /* bodyClass.classList.remove("cold");
+  container.classList.remove("cold"); */
+  removeClassList(bodyClass, "cold");
+  removeClassList(container, "cold");
+}
+
+function removeClassList(element, className) {
+  element.classList.remove(className);
+}
+
+const backgroundColorChange = (temp) =>
+  temp < 15 ? coldClassAdd() : coldClassRemove();
 
 const displayData = async (inputUser) => {
   const { name, temp, country, icon, main } = await getForecast(inputUser);
@@ -54,7 +63,7 @@ const displayData = async (inputUser) => {
   `;
   container.innerHTML += result;
   container.classList.add("show");
-  backgroundColor(temp);
+  backgroundColorChange(temp);
 };
 
 function showCity(e) {
