@@ -1,3 +1,9 @@
 $bg: red;
 $font-family: Roboto, sans-serif;
 $light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+@mixin for-mobile {
+  @media only screen and (max-width: 576px) {
+    @content;
+  }
+}

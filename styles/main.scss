@@ -6,17 +6,17 @@ body {
   background: -moz-linear-gradient(
     183deg,
     rgba(240, 7, 7, 0.393) 0%,
-    rgb(241, 200, 14) 100%
+    rgb(212, 141, 27) 100%
   );
   background: -webkit-linear-gradient(
     183deg,
     rgba(240, 7, 7, 0.393) 0%,
-    rgb(241, 200, 14) 100%
+    rgb(212, 141, 27) 100%
   );
   background: linear-gradient(
     183deg,
-    rgba(240, 7, 7, 0.393) 0%,
-    rgb(241, 200, 14) 100%
+    rgba(207, 141, 141, 0.393) 0%,
+    rgb(212, 141, 27) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e96e18",endColorstr="#719855",GradientType=1);
   min-height: 100vh;
@@ -25,8 +25,9 @@ body {
   font-family: v.$font-family;
 
   &.cold {
-    background: -webkit-linear-gradient(180deg, #9a93e0 0%, #7db3bd 100%);
-    background: linear-gradient(180deg, #9a93e0 0%, #7db3bd 100%);
+    background: -webkit-linear-gradient(180deg, #45435f 0%, #6c7274 100%);
+    background: linear-gradient(180deg, #56546e 0%, #0a0a29 100%),
+      linear-gradient(90deg, rgb(115, 197, 115) 0%, rgb(197, 90, 90) 100%);
   }
 }
 
@@ -53,11 +54,10 @@ body {
   font-size: 1rem;
   color: black;
   border: none;
-  border-bottom: 2px solid orange;
+  border-bottom: 2px solid goldenrod;
   border-radius: 0.5em 0 0.5em 0;
   &:focus {
-    background: white;
-    outline: none;
+    outline: transparent;
   }
 }
 
@@ -69,20 +69,57 @@ body {
   text-align: center;
   margin: 1em;
   padding: 2em 4em;
-  background: rgba(228, 224, 209, 0.3);
+  @include v.for-mobile {
+    padding: 1em 2em;
+  }
+
+  background: rgb(230, 195, 1);
+  background: -moz-linear-gradient(
+    183deg,
+    rgba(230, 195, 1) 0%,
+    rgb(228, 113, 78) 100%
+  );
+  background: -webkit-linear-gradient(
+    183deg,
+    rgba(230, 195, 1) 0%,
+    rgb(228, 113, 78) 100%
+  );
+  background: linear-gradient(
+    183deg,
+    rgb(230, 195, 1) 0%,
+    rgb(228, 113, 78) 100%
+  );
   border-radius: 1em;
-  border: 2px solid orange;
+  border: 4px solid rgb(185, 130, 10);
+  animation: fade-in 2s ease-out;
+
   &.show {
     display: flex;
   }
   &.cold {
-    background: rgba(9, 95, 175, 0.3);
+    background: rgb(220, 205, 255);
+    background: -moz-linear-gradient(
+      180deg,
+      rgba(220, 205, 255, 1) 0%,
+      rgba(61, 89, 143, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      180deg,
+      rgba(220, 205, 255, 1) 0%,
+      rgba(61, 89, 143, 1) 100%
+    );
+    background: linear-gradient(
+      180deg,
+      rgba(220, 205, 255, 1) 0%,
+      rgba(61, 89, 143, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dccdff",endColorstr="#3d598f",GradientType=1);
     border-color: rgb(116, 116, 177);
   }
 
   .date-time {
     font-size: 1rem;
-    padding: 0.3em 0.5em;
+    margin: 0 0.5em;
   }
 
   .city-name {
@@ -91,7 +128,7 @@ body {
   }
 
   .temp {
-    margin: 0.3em;
+    margin-top: 0.5em;
     padding: 0.4em 0.5em;
     background: rgba(250, 250, 250, 0.2);
     border-radius: 0.2em;
@@ -100,15 +137,54 @@ body {
       weight: bold;
     }
     .degree {
-      font-size: 2rem;
+      font-weight: normal;
     }
   }
   .city-icon {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .description {
-      font-size: 1.5rem;
+      font: {
+        size: 1.5rem;
+        weight: bold;
+      }
     }
+  }
+}
+
+.convert {
+  position: relative;
+  display: none;
+  padding: 0.75em 2.5em 0.75em 0.75em;
+  font-size: 1rem;
+  font-weight: bold;
+  border: transparent;
+  border-radius: 0.3em;
+  background: rgba(220, 205, 255, 1);
+  cursor: pointer;
+
+  &:active {
+    background: rgb(213, 216, 21);
+  }
+  &.show {
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0px 0px 5px 5px rgba(172, 172, 179, 0.3);
+  }
+  .image-convert {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -1,18 +1,19 @@
-import key from "./key.js";
+import yek from "./extra.js";
 
 const container = document.querySelector(".result");
 const searchForm = document.getElementById("form");
 const userInput = document.getElementById("city");
 const bodyClass = document.querySelector("body");
+const title = document.querySelector(".title");
+const convertBtn = document.querySelector(".convert");
 
 const weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
 
 const getForecast = async (city) => {
-  const urlToFetch = `${weatherUrl}?&q=${city}&appid=${key}&units=metric`;
+  const urlToFetch = `${weatherUrl}?&q=${city}&appid=${yek}&units=metric`;
   try {
     const response = await fetch(urlToFetch);
     const data = await response.json();
-    console.log(data);
     const {
       name,
       main: { temp },
@@ -38,6 +39,10 @@ function coldClassAdd() {
   container.classList.add("cold");
 }
 
+function removeClassList(element, className) {
+  element.classList.remove(className);
+}
+
 function coldClassRemove() {
   /* bodyClass.classList.remove("cold");
   container.classList.remove("cold"); */
@@ -45,12 +50,15 @@ function coldClassRemove() {
   removeClassList(container, "cold");
 }
 
-function removeClassList(element, className) {
-  element.classList.remove(className);
-}
-
 const backgroundColorChange = (temp) =>
   temp < 15 ? coldClassAdd() : coldClassRemove();
+
+const titleChange = () => (title.style.display = "none");
+
+const showContainerAndBtn = () => {
+  container.classList.add("show");
+  convertBtn.classList.add("show");
+};
 
 const displayData = async (inputUser) => {
   const { name, temp, country, icon, main } = await getForecast(inputUser);
@@ -58,19 +66,29 @@ const displayData = async (inputUser) => {
   const result = `<div class="content">
   <h4 class="city-name">${name}, ${country}</h4><p class="temp">${temp.toFixed(
     1
-  )} <span class="degree">&#8451</span></p></div>
+  )} <span class="degree">°C</span></p></div>
   <div class="city-icon"><img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon"><span class="description">${main}</span></div>
   `;
   container.innerHTML += result;
-  container.classList.add("show");
+  titleChange();
+  showContainerAndBtn();
   backgroundColorChange(temp);
 };
 
-function showCity(e) {
+const showCity = (e) => {
   e.preventDefault();
   const input = userInput.value.trim();
   displayData(input);
   searchForm.reset();
-}
+};
+
+const convertF = () => {
+  const temp = document.querySelector(".temp");
+  const celcius = temp.textContent.slice(0, 3);
+  const fahrenheit = ((celcius / 5) * 9 + 32).toFixed(1);
+  temp.textContent = `${fahrenheit} °F`;
+  convertBtn.classList.remove("show");
+};
 
 searchForm.addEventListener("submit", showCity);
+convertBtn.addEventListener("click", convertF);
