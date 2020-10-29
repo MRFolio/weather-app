@@ -1,5 +1,4 @@
 ### Weather app using [Open Weather](https://openweathermap.org/) API.
----
 You can check out the project [**HERE**](https://mrfolio-weather-app.netlify.app/).
 
 <p align="center">
